@@ -7,7 +7,7 @@
 Summary:       ES6 Number.isNaN ponyfill
 Name:          %{?scl_prefix}nodejs-%{npm_name}
 Version:       1.0.0
-Release:       6%{?dist}
+Release:       7%{?dist}
 License:       MIT
 URL:           https://github.com/sindresorhus/number-is-nan
 Source0:       http://registry.npmjs.org/%{npm_name}/-/%{npm_name}-%{version}.tgz
@@ -29,11 +29,16 @@ Ponyfill: A polyfill that doesn't overwrite the native method
 mkdir -p %{buildroot}%{nodejs_sitelib}/%{npm_name}
 cp -pr index.js package.json %{buildroot}%{nodejs_sitelib}/%{npm_name}
 
+%nodejs_symlink_deps
+
 %files
 %doc license readme.md
 %{nodejs_sitelib}/%{npm_name}
 
 %changelog
+* Wed Mar 08 2017 Zuzana Svetlikova <zsvetlik@redhat.com> - 1.0.0-7
+- Add symlink macro
+
 * Tue Feb 16 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 1.0.0-6
 - Use macro in -runtime dependency
 
